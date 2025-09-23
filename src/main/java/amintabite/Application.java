@@ -1,7 +1,12 @@
 package amintabite;
 
+import amintabite.entities.Event;
+import amintabite.entities.EventType;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.time.LocalDate;
 
 public class Application {
 
@@ -11,6 +16,13 @@ public class Application {
 
 
     public static void main(String[] args) {
+        EntityManager eT = eMf.createEntityManager();
+        Event linkin_park = new Event("Emptiness machine",
+                LocalDate.of(2026, 05, 22), "linking park tour",
+                EventType.PUBLIC, 50);
+
         System.out.println("Hello World!");
+        linkin_park.toString();
     }
+
 }
