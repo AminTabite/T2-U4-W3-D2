@@ -1,5 +1,6 @@
 package amintabite;
 
+import amintabite.dao.EventDAO;
 import amintabite.entities.Event;
 import amintabite.entities.EventType;
 import jakarta.persistence.EntityManager;
@@ -17,12 +18,31 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager eT = eMf.createEntityManager();
+
+        EventDAO Ed = new EventDAO(eT);
+
         Event linkin_park = new Event("Emptiness machine",
                 LocalDate.of(2026, 05, 22), "linking park tour",
                 EventType.PUBLIC, 50);
 
-        System.out.println("Hello World!");
-        linkin_park.toString();
+
+        Event ThreeDaysGrace = new Event("Mayday",
+                LocalDate.of(2025, 12, 28), "Three days grace",
+                EventType.PUBLIC, 200);
+
+
+        Event Raxeller = new Event("Dont Leave",
+                LocalDate.of(2025, 12, 28), "Raxeller",
+                EventType.PUBLIC, 110);
+
+        //   Event idtrovato = Ed.findById(3);
+
+        //System.out.println(idtrovato.toString());
+
+
+        Ed.findByIdAndDelete(7);
+
+
     }
 
 }
