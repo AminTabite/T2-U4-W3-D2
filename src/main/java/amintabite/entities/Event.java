@@ -1,21 +1,21 @@
 package amintabite.entities;
 
-
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
-
-@Table(name = "Events")
-
-
+@Table(name = "events")
 public class Event {
-    @Id //identifica la primary key, notazione obligatory
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "uuid")
+    private UUID id;
+
 
     //attributi ovvero row e tipo delle colonne
-    private long id;
 
 
     @Column(name = "title", nullable = false, length = 40)
@@ -36,6 +36,10 @@ public class Event {
     @Column(name = "maxPeopleAllowed", nullable = false)
     private int maxPeople;
 
+
+    @ManyToOne()
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
     //costruttore
 
     public Event() {
@@ -43,7 +47,7 @@ public class Event {
     //ritornano oggetti quando leggiamo la tabella
 
 
-    public Event(String title, LocalDate eventDate, String description, EventType type, int maxPeople) {
+    public Event(String title, LocalDate eventDate, String description, EventType type, int maxPeople, Location location) {
         this.title = title;
         this.eventDate = eventDate;
         this.description = description;
@@ -54,7 +58,7 @@ public class Event {
 // metodi
 
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -64,6 +68,10 @@ public class Event {
 
     public LocalDate getEventDate() {
         return eventDate;
+    }
+
+    public void setEventDate(LocalDate eventDate) {
+        this.eventDate = eventDate;
     }
 
     public String getDescription() {
@@ -78,10 +86,10 @@ public class Event {
         return maxPeople;
     }
 
-    public void setEventDate(LocalDate eventDate) {
-        this.eventDate = eventDate;
-    }
 
+    public Location getLocation() {
+        return location;
+    }
 
     @Override
     public String toString() {
@@ -92,6 +100,7 @@ public class Event {
                 ", description='" + description + '\'' +
                 ", type=" + type +
                 ", maxPeople=" + maxPeople +
+                ", location=" + location +
                 '}';
     }
 }

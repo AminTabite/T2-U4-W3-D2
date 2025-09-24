@@ -1,13 +1,9 @@
 package amintabite;
 
 import amintabite.dao.EventDAO;
-import amintabite.entities.Event;
-import amintabite.entities.EventType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
-import java.time.LocalDate;
 
 public class Application {
 
@@ -21,26 +17,8 @@ public class Application {
 
         EventDAO Ed = new EventDAO(eT);
 
-        Event linkin_park = new Event("Emptiness machine",
-                LocalDate.of(2026, 05, 22), "linking park tour",
-                EventType.PUBLIC, 50);
 
-
-        Event ThreeDaysGrace = new Event("Mayday",
-                LocalDate.of(2025, 12, 28), "Three days grace",
-                EventType.PUBLIC, 200);
-
-
-        Event Raxeller = new Event("Dont Leave",
-                LocalDate.of(2025, 12, 28), "Raxeller",
-                EventType.PUBLIC, 110);
-
-        //   Event idtrovato = Ed.findById(3);
-
-        //System.out.println(idtrovato.toString());
-
-
-        Ed.findByIdAndDelete(7);
+        System.out.println("ok");
 
 
     }

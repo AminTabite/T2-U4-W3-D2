@@ -4,6 +4,8 @@ import amintabite.entities.Event;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class EventDAO {
 
     private EntityManager entityManager;
@@ -31,11 +33,9 @@ public class EventDAO {
         System.out.println("Evento" + newEvent.toString() + " e' stato aggiunto");
 
     }
-
-
     // get by id
 
-    public Event findById(long eventId) {
+    public Event findById(UUID eventId) {
 
         Event found = entityManager.find(Event.class, eventId);
         return found;
@@ -43,7 +43,7 @@ public class EventDAO {
     }
     // find by Id and delete
 
-    public void findByIdAndDelete(long eventId) {
+    public void findByIdAndDelete(UUID eventId) {
 
         // cerco nel db tramite id
         Event foundtodelete = this.findById(eventId);
