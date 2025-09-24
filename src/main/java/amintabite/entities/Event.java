@@ -3,43 +3,37 @@ package amintabite.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "events")
 public class Event {
 
+
+    @OneToMany(mappedBy = "id")
+    List<Partecipazioni> partecipazioni;
+    //attributi ovvero row e tipo delle colonne
     @Id
     @GeneratedValue
     @Column(name = "id", updatable = false, nullable = false, columnDefinition = "uuid")
     private UUID id;
-
-
-    //attributi ovvero row e tipo delle colonne
-
-
     @Column(name = "title", nullable = false, length = 40)
     private String title;
-
-
     @Column(name = "Event_date", nullable = false)
     private LocalDate eventDate;
-
     @Column(name = "description", nullable = true, length = 150)
     private String description;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "Event_type")
     private EventType type;
-
-
     @Column(name = "maxPeopleAllowed", nullable = false)
     private int maxPeople;
-
-
     @ManyToOne()
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
+
+
     //costruttore
 
     public Event() {

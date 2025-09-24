@@ -22,9 +22,10 @@ public class Persona {
     @Column(name = "Data di nascita")
     private LocalDate dataDiNascita;
     @Column(name = "Genere")
+    @Enumerated(EnumType.STRING)
     private Sesso genere;
 
-    @OneToMany
+    @OneToMany(mappedBy = "personaId")
     private List<Partecipazioni> eventipartecipati;
 
 
@@ -84,6 +85,7 @@ public class Persona {
         this.dataDiNascita = dataDiNascita;
     }
 
+    @Enumerated(EnumType.STRING)
     public Sesso getGenere() {
         return genere;
     }
@@ -96,7 +98,5 @@ public class Persona {
         return eventipartecipati;
     }
 
-    public void setEventipartecipati(List<Partecipazioni> eventipartecipati) {
-        this.eventipartecipati = eventipartecipati;
-    }
 }
+

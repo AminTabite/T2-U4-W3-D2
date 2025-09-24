@@ -7,6 +7,8 @@
         <!-- Se non dichiaro le mie entities qua, non le troverà e non creerà automaticamente le tabelle -->
         <class>amintabite.entities.Event</class>
         <class>amintabite.entities.Location</class>
+        <class>amintabite.entities.Persona</class>
+        <class>amintabite.entities.Partecipazioni</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/T2u4w3d2"/>
             <!-- Dopo l'ultimo slash devo inserire il nome del database (QUESTO DEVE ESISTERE PERO') -->
