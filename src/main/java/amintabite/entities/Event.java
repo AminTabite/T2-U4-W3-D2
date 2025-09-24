@@ -41,7 +41,7 @@ public class Event {
     //ritornano oggetti quando leggiamo la tabella
 
 
-    public Event(String title, LocalDate eventDate, String description, EventType type, int maxPeople, Location location) {
+    public Event(String title, LocalDate eventDate, String description, EventType type, int maxPeople) {
         this.title = title;
         this.eventDate = eventDate;
         this.description = description;

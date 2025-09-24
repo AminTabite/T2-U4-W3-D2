@@ -1,9 +1,16 @@
 package amintabite;
 
 import amintabite.dao.EventDAO;
+import amintabite.dao.LocationDAO;
+import amintabite.dao.PartecipazioniDAO;
+import amintabite.dao.PersonaDAO;
+import amintabite.entities.Event;
+import amintabite.entities.EventType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.time.LocalDate;
 
 public class Application {
 
@@ -16,6 +23,11 @@ public class Application {
         EntityManager eT = eMf.createEntityManager();
 
         EventDAO Ed = new EventDAO(eT);
+        PartecipazioniDAO PZd = new PartecipazioniDAO(eT);
+        LocationDAO Ld = new LocationDAO(eT);
+        PersonaDAO Pd = new PersonaDAO(eT);
+
+        Event giochidatavolo = new Event("gioco dnd", LocalDate.of(2025, 12, 25), "descrizione a caso", EventType.PUBLIC, 10, "Torino");
 
 
         System.out.println("ok");
